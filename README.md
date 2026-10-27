@@ -1,43 +1,41 @@
-# HỆ THỐNG QUẢN LÝ NHÂN SỰ TRÊN NỀN TẢNG ĐIỆN TOÁN ĐÁM MÂY
+# HỆ THỐNG QUẢN LÝ NHÂN SỰ
 
 ## 1. Thông tin sinh viên
 
 - Họ và tên: Đoàn Mỹ Nhi
-- Mã số sinh viên: 237430
+- MSSV: 237430
 - Lớp: DH23TIN09
 - Học phần: Điện toán đám mây
 - Đề tài: Xây dựng và triển khai hệ thống quản lý nhân sự trên nền tảng đám mây
 
 ## 2. Giới thiệu dự án
 
-Hệ thống quản lý nhân sự được xây dựng nhằm hỗ trợ quản lý thông tin nhân viên thông qua giao diện website. Người dùng có thể xem danh sách nhân viên, tìm kiếm, thêm mới, xem chi tiết, cập nhật và xóa hồ sơ nhân viên.
+Hệ thống quản lý nhân sự được xây dựng nhằm hỗ trợ việc quản lý thông tin nhân viên. Hệ thống cho phép người dùng xem danh sách, tìm kiếm, thêm mới, xem chi tiết, chỉnh sửa và xóa thông tin nhân viên.
 
-Ứng dụng sử dụng React cho Frontend, Node.js và Express cho Backend, MongoDB Atlas để lưu trữ dữ liệu. Mã nguồn được quản lý bằng GitHub và Backend được triển khai trên Render.
+Ứng dụng sử dụng React để xây dựng giao diện, Node.js và Express để xử lý Backend, MongoDB Atlas để lưu trữ dữ liệu và GitHub để quản lý mã nguồn. Backend được triển khai trên nền tảng Render.
 
 ## 3. Công nghệ sử dụng
 
-| Thành phần | Công nghệ |
-|---|---|
-| Frontend | React, Vite, HTML, CSS, JavaScript |
-| Backend | Node.js, Express |
-| Database | MongoDB Atlas, Mongoose |
-| Quản lý mã nguồn | Git, GitHub |
-| Đóng gói | Docker |
-| Lưu trữ Docker image | Docker Hub |
-| Triển khai | Render |
-| Công cụ phát triển | Visual Studio Code |
+- Frontend: React, Vite, HTML, CSS, JavaScript
+- Backend: Node.js, Express
+- Database: MongoDB Atlas, Mongoose
+- Quản lý mã nguồn: Git, GitHub
+- Đóng gói ứng dụng: Docker
+- Lưu trữ Docker image: Docker Hub
+- Triển khai ứng dụng: Render
+- Công cụ lập trình: Visual Studio Code
 
 ## 4. Chức năng hệ thống
 
-Hệ thống được xây dựng với các chức năng:
+Hệ thống bao gồm các chức năng:
 
 - Hiển thị danh sách nhân viên.
 - Xem thông tin chi tiết nhân viên.
-- Thêm hồ sơ nhân viên.
-- Tìm kiếm theo mã nhân viên hoặc họ tên.
+- Thêm nhân viên mới.
+- Tìm kiếm nhân viên theo mã nhân viên hoặc họ tên.
 - Cập nhật thông tin nhân viên.
 - Xóa nhân viên có xác nhận.
-- Hiển thị thông báo khi thao tác thành công hoặc xảy ra lỗi.
+- Hiển thị thông báo khi thao tác thành công hoặc thất bại.
 
 ## 5. Cơ sở dữ liệu MongoDB Atlas
 
@@ -46,9 +44,18 @@ Hệ thống được xây dựng với các chức năng:
 - Collection: employees
 - Số lượng nhân viên mẫu: 3
 
-Các trường dữ liệu gồm:
+Các trường dữ liệu:
 
-`employeeId`, `fullName`, `gender`, `dateOfBirth`, `department`, `position`, `email`, `phone`, `hireDate`, `status`.
+- employeeId
+- fullName
+- gender
+- dateOfBirth
+- department
+- position
+- email
+- phone
+- hireDate
+- status
 
 Dữ liệu mẫu:
 
@@ -58,7 +65,7 @@ Dữ liệu mẫu:
 | NV002 | Trần Thị Bình | Kế toán |
 | NV003 | Lê Minh Cường | Nhân sự |
 
-## 6. Cấu trúc dự án
+## 6. Cấu trúc thư mục
 
 ```text
 237430_DoanMyNhi/
@@ -92,14 +99,21 @@ Dữ liệu mẫu:
 
 ### 7.1. Backend
 
-Chuyển vào thư mục Backend:
+Mở Terminal trong thư mục dự án và chạy:
 
 ```bash
 cd backend
 npm install
 ```
 
-Tạo file `.env` dựa trên `.env.example`, sau đó cấu hình `MONGODB_URI`, `DB_NAME`, `PORT` và `CORS_ORIGIN`.
+Tạo file `.env` và cấu hình các biến môi trường:
+
+```env
+PORT=5000
+DB_NAME=237430_DoanMyNhi
+MONGODB_URI=YOUR_MONGODB_CONNECTION_STRING
+CORS_ORIGIN=http://localhost:5173
+```
 
 Khởi chạy Backend:
 
@@ -107,47 +121,49 @@ Khởi chạy Backend:
 npm run dev
 ```
 
-API chạy tại cổng 5000 trong môi trường phát triển.
+Backend chạy tại:
+
+http://localhost:5000
 
 ### 7.2. Frontend
 
-Mở Terminal khác:
+Mở Terminal khác và chạy:
 
 ```bash
 cd frontend
 npm install
 ```
 
-Tạo file `.env` với địa chỉ Backend API phù hợp.
+Tạo file `.env`:
 
-Chạy:
+```env
+VITE_API_URL=http://localhost:5000
+```
+
+Khởi chạy Frontend:
 
 ```bash
 npm run dev
 ```
 
-Mở địa chỉ Local do Vite hiển thị, thông thường là `http://localhost:5173`.
+Frontend chạy tại:
+
+http://localhost:5173
 
 ## 8. REST API
 
 | Phương thức | Endpoint | Chức năng |
 |---|---|---|
-| GET | /api/employees | Danh sách nhân viên |
-| GET | /api/employees/:id | Chi tiết nhân viên |
-| GET | /api/employees?search=An | Tìm kiếm |
+| GET | /api/employees | Lấy danh sách nhân viên |
+| GET | /api/employees/:id | Xem chi tiết nhân viên |
+| GET | /api/employees?search=An | Tìm kiếm nhân viên |
 | POST | /api/employees | Thêm nhân viên |
-| PUT | /api/employees/:id | Cập nhật |
-| DELETE | /api/employees/:id | Xóa |
-| GET | /health | Kiểm tra Backend |
+| PUT | /api/employees/:id | Cập nhật nhân viên |
+| DELETE | /api/employees/:id | Xóa nhân viên |
+| GET | /health | Kiểm tra trạng thái Backend |
 
 ## 9. Kết quả thực hiện
 
-- Câu 1: Đã tạo GitHub Repository và thực hiện commit, push.
-- Câu 2: Đã tạo MongoDB Atlas với database, collection và 3 nhân viên mẫu.
-- Câu 3: Đã xây dựng Backend REST API, kết nối MongoDB và chạy thành công.
-- Câu 4: Đã xây dựng giao diện React, hiển thị dữ liệu nhân viên và build thành công. Đã push lên GitHub.
-- Câu 5: Đã tạo Docker Hub repository Backend. Trạng thái image cần kiểm tra.
-- Câu 6: Đã tạo Docker Hub repository Frontend. Trạng thái image cần kiểm tra.
-- Câu 7: Chưa xác nhận triển khai Frontend lên Render.
-- Câu 8: Đã triển khai Backend lên Render và xác nhận kết nối MongoDB thành công.
-- Câu 9: Hoàn thiện đường link nộp bài và kiểm tra
+- Câu 1: Đã tạo GitHub Repository và thực hiện commit, push mã nguồn.
+- Câu 2: Đã tạo MongoDB Atlas với database 237430_DoanMyNhi, collection employees và 3 nhân viên mẫu.
+- Câu 3: Đã xây dựng Backend REST API, kết nối MongoDB Atlas và chạy thành công
